@@ -1,5 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Colors } from '@shared/theme';
+
+console.log(Colors.blue);
 
 const App = () => {
   return (
