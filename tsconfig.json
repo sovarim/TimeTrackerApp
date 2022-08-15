@@ -5,7 +5,8 @@
     "baseUrl": "./",
     "skipLibCheck": true,
     "paths": {
-      "@shared/*": ["src/shared/*"]
+      "@/*": ["src/*"],
+      
     }
   }
 }

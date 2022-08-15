@@ -7,7 +7,7 @@ module.exports = {
         root: './',
         extensions: ['.ts', '.tsx', '.js', '.ios.js', '.android.js'],
         alias: {
-          '@shared': './src/shared',
+          '@': './src',
         },
       },
     ],

@@ -1,6 +1,6 @@
-import Colors from './Colors';
-import { type ThemeConfig } from './ThemeConfig.type';
-import LightThemeConfig from './LightThemeConfig';
-import DarkThemeConfig from './DarkThemeConfig';
-
-export { Colors, LightThemeConfig, ThemeConfig, DarkThemeConfig };
+export { type ThemeConfig } from './ThemeConfig.type';
+export * from './Colors';
+export * from './LightThemeConfig';
+export * from './DarkThemeConfig';
+export * from './Styles';
+export * from './Spacings';
