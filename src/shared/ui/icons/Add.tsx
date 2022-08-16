@@ -1,4 +1,4 @@
-import { createSvgIcon } from '@shared/lib/icons';
+import { createSvgIcon } from '@/shared/lib/icons';
 import React from 'react';
 import { Path } from 'react-native-svg';
 
@@ -19,6 +19,9 @@ const Add = createSvgIcon(
       strokeLinejoin='round'
     />
   </>,
+  {
+    viewBox: 32,
+  },
 );
 
 export default Add;

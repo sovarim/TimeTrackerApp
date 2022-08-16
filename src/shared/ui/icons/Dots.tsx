@@ -1,5 +1,5 @@
 import React from 'react';
-import { createSvgIcon } from '@shared/lib/icons';
+import { createSvgIcon } from '@/shared/lib/icons';
 import { Path } from 'react-native-svg';
 
 const Dots = createSvgIcon(

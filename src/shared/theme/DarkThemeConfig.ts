@@ -6,4 +6,6 @@ export const DarkThemeConfig: ThemeConfig = {
   background2: Colors.black2,
   text: Colors.white,
   text2: Colors.lightGray,
+  inverseBackground: Colors.white,
+  inactive: Colors.blackGray,
 };

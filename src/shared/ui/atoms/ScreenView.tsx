@@ -18,6 +18,7 @@ export const ScreenView = ({
   ...props
 }: ScreenViewProps) => {
   const ViewComponent = safeArea ? SafeAreaView : View;
+
   return (
     <ViewComponent
       style={[

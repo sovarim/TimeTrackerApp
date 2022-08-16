@@ -3,4 +3,6 @@ export type ThemeConfig = {
   text2: string;
   background: string;
   background2: string;
+  inverseBackground: string;
+  inactive: string;
 };

@@ -1,5 +1,5 @@
 import React, { ReactNode, useMemo } from 'react';
-import { Colors } from '@shared/theme';
+import { Colors } from '@/shared/theme';
 import Svg from 'react-native-svg';
 
 export type SvgIconProps = {
@@ -7,7 +7,7 @@ export type SvgIconProps = {
   color?: string;
 };
 
-const createSvgIcon = (jsxPath: ReactNode) => {
+const createSvgIcon = (jsxPath: ReactNode, opts?: { viewBox: number }) => {
   return ({ color = Colors.black, size = 24 }: SvgIconProps) => {
     const transformedJsxPath = useMemo(() => {
       let _jsxPathClone = null;
@@ -39,7 +39,12 @@ const createSvgIcon = (jsxPath: ReactNode) => {
     }, [color]);
 
     return (
-      <Svg width={size} height={size} viewBox='0 0 24 24' color={color}>
+      <Svg
+        width={size}
+        height={size}
+        viewBox={opts?.viewBox ? `0 0 ${opts.viewBox} ${opts.viewBox}` : '0 0 24 24'}
+        color={color}
+      >
         {transformedJsxPath}
       </Svg>
     );
