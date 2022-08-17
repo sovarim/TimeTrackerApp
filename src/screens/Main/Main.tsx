@@ -1,11 +1,14 @@
-import { ScreenView } from '@/shared/ui';
+import { useTheme } from '@/shared/theme';
+import { ScreenView, Typography } from '@/shared/ui';
 import React from 'react';
-import { Text } from 'react-native';
+import { Button } from 'react-native';
 
 const Main = () => {
+  const { toggleTheme } = useTheme();
   return (
     <ScreenView safeArea>
-      <Text>Main</Text>
+      <Typography variant='title'>Task</Typography>
+      <Button title='Switch theme' onPress={toggleTheme} />
     </ScreenView>
   );
 };

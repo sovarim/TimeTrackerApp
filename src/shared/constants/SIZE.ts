@@ -1,4 +1,4 @@
-export const Spacings = {
+export const SIZE = {
   1: 4,
   2: 8,
   3: 12,
@@ -9,4 +9,6 @@ export const Spacings = {
   8: 32,
   9: 36,
   10: 40,
+  11: 44,
+  12: 48,
 };

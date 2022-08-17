@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Main, Productivity } from '@/screens';
-import { LightThemeConfig, Spacings } from '@/shared/theme';
+import { Spacing, useTheme } from '@/shared/theme';
 import { StyleSheet, View } from 'react-native';
 import { AddIcon, PieChartFilledIcon, TimeFilledIcon, TimeOutlineIcon } from '@/shared/ui/icons';
 import PieChart from '@/shared/ui/icons/PieChart';
@@ -10,14 +10,15 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 const Tab = createBottomTabNavigator();
 
 const BottomTab = () => {
+  const { theme } = useTheme();
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: styles.tabBar,
+        tabBarStyle: [styles.tabBar, { backgroundColor: theme.colors.background2 }],
         tabBarShowLabel: false,
-        tabBarActiveTintColor: LightThemeConfig.inverseBackground,
-        tabBarInactiveTintColor: LightThemeConfig.inactive,
+        tabBarActiveTintColor: theme.colors.inverseBackground,
+        tabBarInactiveTintColor: theme.colors.inactive,
       }}
     >
       <Tab.Screen
@@ -37,7 +38,7 @@ const BottomTab = () => {
         component={Main}
         options={{
           tabBarIcon: () => {
-            return <AddIcon color={LightThemeConfig.background2} size={32} />;
+            return <AddIcon color={theme.colors.background2} size={32} />;
           },
           tabBarButton: (props) => {
             return (
@@ -46,7 +47,7 @@ const BottomTab = () => {
                   borderRadius: 100,
                   width: 44,
                   height: 44,
-                  backgroundColor: LightThemeConfig.inverseBackground,
+                  backgroundColor: theme.colors.inverseBackground,
                   shadowColor: '#000000',
                   shadowOffset: {
                     width: 0,
@@ -55,7 +56,6 @@ const BottomTab = () => {
                   shadowOpacity: 0.18,
                   shadowRadius: 4.59,
                   elevation: 5,
-                  marginTop: -Spacings[3],
                 }}
               >
                 {props.children}
@@ -82,7 +82,6 @@ const BottomTab = () => {
 
 const styles = StyleSheet.create({
   tabBar: {
-    backgroundColor: LightThemeConfig.background2,
     position: 'absolute',
     height: 90,
     bottom: 0,
