@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { ColorSchemeName, useColorScheme } from 'react-native';
+import { ColorSchemeName, StatusBar, StatusBarStyle, useColorScheme } from 'react-native';
 import { DarkThemeConfig, LightThemeConfig, ThemeConfig } from '../styles';
 
 export type ThemeContext = {
@@ -40,7 +40,19 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
     };
   }, [themeConfig, toggleTheme]);
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  const barStyle = useMemo<StatusBarStyle>(() => {
+    if (themeConfig.name === 'dark') {
+      return 'light-content';
+    }
+    return 'dark-content';
+  }, [themeConfig]);
+
+  return (
+    <ThemeContext.Provider value={value}>
+      <StatusBar translucent backgroundColor='transparent' barStyle={barStyle} />
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
 export const useTheme = () => {

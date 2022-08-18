@@ -7,4 +7,9 @@ export const Styles = StyleSheet.create({
   flexRow: {
     flexDirection: 'row',
   },
+  rowBetweenCenter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
 });

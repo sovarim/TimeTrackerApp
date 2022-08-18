@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const FontFamily = {
   RubikMedium: 'Rubik-Medium',
-  RubikRegular: 'RubikRegular',
+  RubikRegular: 'Rubik-Regular',
 };
 
 export const TypographyStyles = StyleSheet.create({
@@ -13,6 +13,10 @@ export const TypographyStyles = StyleSheet.create({
   bigText2: {
     fontFamily: FontFamily.RubikMedium,
     fontSize: 40,
+  },
+  bigText3: {
+    fontFamily: FontFamily.RubikMedium,
+    fontSize: 32,
   },
   title: {
     fontFamily: FontFamily.RubikMedium,
