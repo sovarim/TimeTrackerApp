@@ -3,6 +3,7 @@ import React, {
   PropsWithChildren,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -27,12 +28,15 @@ const _defineThemeConfig = (colorScheme: ColorSchemeName, inverse?: boolean) => 
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const colorScheme = useColorScheme();
-  const [themeConfig, setThemeConfig] = useState(_defineThemeConfig(colorScheme));
+  const [themeConfig, setThemeConfig] = useState(LightThemeConfig);
+
+  useEffect(() => {
+    setThemeConfig(_defineThemeConfig(colorScheme));
+  }, [colorScheme]);
 
   const toggleTheme = useCallback(() => {
     setThemeConfig((prev) => _defineThemeConfig(prev.name, true));
   }, []);
-
   const value = useMemo<ThemeContext>(() => {
     return {
       toggleTheme,

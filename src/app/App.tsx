@@ -1,3 +1,4 @@
+import 'react-native-get-random-values';
 import '@/shared/config/i18next.config';
 
 import React from 'react';
