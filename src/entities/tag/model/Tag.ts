@@ -1,4 +1,4 @@
-import { query } from '@/entities/realm/lib';
+import { query } from '@/shared/db/realm/lib';
 import { ITask } from '@/entities/task';
 import { QueryFn } from '@/shared/types';
 import { Realm } from '@realm/react';

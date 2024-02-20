@@ -17,6 +17,9 @@ export const Typography = ({
 }: TypographyProps) => {
   const { theme } = useTheme();
   return (
-    <Text style={[TypographyStyles[variant], { color: theme.colors[color] }, style]} {...props} />
+    <Text
+      style={[TypographyStyles[variant], { color: theme.colors?.[color] || color }, style]}
+      {...props}
+    />
   );
 };

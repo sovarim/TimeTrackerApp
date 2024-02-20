@@ -38,6 +38,10 @@ export const TypographyStyles = StyleSheet.create({
     fontFamily: FontFamily.RubikRegular,
     fontSize: 14,
   },
+  textSmMedium: {
+    fontFamily: FontFamily.RubikMedium,
+    fontSize: 14,
+  },
   textXs: {
     fontFamily: FontFamily.RubikRegular,
     fontSize: 12,

@@ -6,8 +6,15 @@ import withProviders from './providers/withProviders';
 import RootNavigation from '@/navigation/RootNavigation';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Styles } from '@/shared/theme';
+import { useInitUserSettings } from '@/shared/db/userSettings/lib';
 
 const App = () => {
+  const userSettings = useInitUserSettings();
+
+  if (userSettings.initializing) {
+    return null;
+  }
+
   return (
     <GestureHandlerRootView style={Styles.flex}>
       <RootNavigation />

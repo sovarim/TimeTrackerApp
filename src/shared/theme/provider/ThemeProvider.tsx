@@ -1,7 +1,6 @@
 import React, {
   createContext,
   PropsWithChildren,
-  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -9,40 +8,41 @@ import React, {
 } from 'react';
 import { ColorSchemeName, StatusBar, StatusBarStyle, useColorScheme } from 'react-native';
 import { DarkThemeConfig, LightThemeConfig, ThemeConfig } from '../styles';
+import { useUserSettings } from '@/shared/db/userSettings/lib';
+import { ThemeValue } from '@/shared/db/userSettings/model';
 
 export type ThemeContext = {
-  toggleTheme: () => void;
   theme: ThemeConfig;
 };
 
 export const ThemeContext = createContext<ThemeContext>({} as ThemeContext);
 
-const _defineThemeConfig = (colorScheme: ColorSchemeName, inverse?: boolean) => {
-  switch (colorScheme) {
-    case 'dark':
-      return inverse ? LightThemeConfig : DarkThemeConfig;
-    default:
-      return inverse ? DarkThemeConfig : LightThemeConfig;
+const themeMap = {
+  dark: DarkThemeConfig,
+  light: LightThemeConfig,
+};
+
+const defineThemeConfig = (colorScheme: ColorSchemeName, theme: ThemeValue) => {
+  if (theme === 'system' && colorScheme) {
+    return themeMap[colorScheme];
   }
+  return themeMap[theme as Exclude<ThemeValue, 'system'>];
 };
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const colorScheme = useColorScheme();
-  const [themeConfig, setThemeConfig] = useState(LightThemeConfig);
+  const { theme } = useUserSettings();
+  const [themeConfig, setThemeConfig] = useState(() => defineThemeConfig(colorScheme, theme));
 
   useEffect(() => {
-    setThemeConfig(_defineThemeConfig(colorScheme));
-  }, [colorScheme]);
+    setThemeConfig(defineThemeConfig(colorScheme, theme));
+  }, [colorScheme, theme]);
 
-  const toggleTheme = useCallback(() => {
-    setThemeConfig((prev) => _defineThemeConfig(prev.name, true));
-  }, []);
   const value = useMemo<ThemeContext>(() => {
     return {
-      toggleTheme,
       theme: themeConfig,
     };
-  }, [themeConfig, toggleTheme]);
+  }, [themeConfig]);
 
   const barStyle = useMemo<StatusBarStyle>(() => {
     if (themeConfig.name === 'dark') {

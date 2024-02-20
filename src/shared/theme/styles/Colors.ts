@@ -10,4 +10,6 @@ export const Colors = {
   dark2: '#18152C',
   white: '#FFFFFF',
   blackGray: '#999999',
+  gray: '#333333',
+  gray2: '#4f4f4f',
 };

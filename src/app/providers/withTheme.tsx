@@ -1,8 +1,12 @@
 import { ThemeProvider } from '@/shared/theme';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-const withTheme = (component: () => ReactNode) => () => {
-  return <ThemeProvider>{component()}</ThemeProvider>;
+const withTheme = (Component: () => JSX.Element | null) => () => {
+  return (
+    <ThemeProvider>
+      <Component />
+    </ThemeProvider>
+  );
 };
 
 export default withTheme;

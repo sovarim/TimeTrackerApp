@@ -1,8 +1,12 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-const withSafeArea = (component: () => ReactNode) => {
-  return () => <SafeAreaProvider>{component()}</SafeAreaProvider>;
+const withSafeArea = (Component: () => JSX.Element | null) => {
+  return () => (
+    <SafeAreaProvider>
+      <Component />
+    </SafeAreaProvider>
+  );
 };
 
 export default withSafeArea;

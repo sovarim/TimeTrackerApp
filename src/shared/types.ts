@@ -7,4 +7,4 @@ export type TimeFormat = {
   minutes: number;
 };
 
-export type QueryFn<T = any> = (realm: Realm, task: T) => void;
+export type QueryFn<T = any> = (realm: Realm, type: T) => void;
